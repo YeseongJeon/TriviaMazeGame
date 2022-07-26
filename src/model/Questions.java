@@ -1,3 +1,5 @@
+
+package model;
 /*
  * This will also be a special class for our project. 
  * This shall contain the various questions that we will continue to ask the user as he completes the game. 

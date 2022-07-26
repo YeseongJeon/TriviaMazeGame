@@ -1,1 +1,1 @@
-A responsive Trivia Maze Game. That allows the user to go through the maze and unlock doors by answering questions until they reach the exit. The user will complete the game if they answer all trivia questions correctly and complete the maze.
+A responsive view.Trivia Maze Game. That allows the user to go through the maze and unlock doors by answering questions until they reach the exit. The user will complete the game if they answer all trivia questions correctly and complete the maze.
