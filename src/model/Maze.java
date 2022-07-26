@@ -2,7 +2,7 @@
 package model;
 
 /*
- * This will be an extremely Trivial part of our Trivia Maze Game. 
+ * This will be an extremely Trivial part of our view.Trivia Maze Game.
  * This class will contain a various number of methods.
  * Some of them are a method to first create the maze. 
  * A method to print out that maze that we have just created.

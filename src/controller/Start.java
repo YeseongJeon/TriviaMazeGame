@@ -1,4 +1,4 @@
-/*
+package controller;/*
  * This class will allow us to start the game.
  */
 
