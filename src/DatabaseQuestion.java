@@ -44,6 +44,7 @@ public class DatabaseQuestion {
 
 //	        String query1 = "INSERT INTO questions ( QUESTION, ANSWER ) VALUES ( 'The 9/11 terror in New York, happened on September 11th, 2001.', 'True' )";
 //	        String query2 = "INSERT INTO questions ( QUESTION, ANSWER ) VALUES ( 'The person depicted on the 100 dollar bill is Donald Trump.', 'False' )";
+//	        String query3 = "INSERT INTO questions ( QUESTION, ANSWER ) VALUES ( 'The first president of USA is George Washington.', 'True' )";
 //
 //	        try ( Connection conn = ds.getConnection();
 //	              Statement stmt = conn.createStatement(); ) {
@@ -52,6 +53,9 @@ public class DatabaseQuestion {
 //
 //	            rv = stmt.executeUpdate( query2 );
 //	            System.out.println( "2nd executeUpdate() returned " + rv );
+//	          
+//	            rv = stmt.executeUpdate( query3 );
+//              System.out.println( "3nd executeUpdate() returned " + rv );
 //	        } catch ( SQLException e ) {
 //	            e.printStackTrace();
 //	            System.exit( 0 );
