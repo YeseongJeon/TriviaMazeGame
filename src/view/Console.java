@@ -6,7 +6,6 @@ public class Console {
 
     private static final String QUIT_BUTTON = "Q";
     private static final String MAIN_MENU_BUTTON = "M";
-
     public static void printFirstPage() {
 
 
