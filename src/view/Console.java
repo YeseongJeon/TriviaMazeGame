@@ -4,8 +4,8 @@ public class Console {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    private static final String QUIT_BUTTON  = "Q";
-    private static final String MAIN_MENU_BUTTON  = "M";
+    private static final String QUIT_BUTTON = "Q";
+    private static final String MAIN_MENU_BUTTON = "M";
 
     public static void printFirstPage() {
 
@@ -37,8 +37,21 @@ public class Console {
         System.out.println("Choose an option below: ");
         System.out.println(
                 "NEW GAME (Press 1)      LOAD GAME (Press 2)      HELP SCREEN (Press 3)      QUIT (Press 4)");
-          }
-
-
     }
 
+    public static void printmenuscreen() {
+        System.out.println("\n" +
+                "█▀▄▀█ ▄▀█ █ █▄░█   █▀▄▀█ █▀▀ █▄░█ █░█\n" +
+                "█░▀░█ █▀█ █ █░▀█   █░▀░█ ██▄ █░▀█ █▄█");
+        System.out.println();
+        System.out.println("    SAVE GAME       (Press 1)");
+        System.out.println("    GO TO HOME PAGE (Press 2)");
+        System.out.println("    CLOSE MAIN MENU (Press 3)");
+        System.out.println("    HELP PAGE       (Press 4)");
+        System.out.println("    QUIT GAME       (Press 5)");
+        System.out.println("\n" +
+                "█▀▄▀█ ▄▀█ █ █▄░█   █▀▄▀█ █▀▀ █▄░█ █░█\n" +
+                "█░▀░█ █▀█ █ █░▀█   █░▀░█ ██▄ █░▀█ █▄█");
+
+    }
+}
