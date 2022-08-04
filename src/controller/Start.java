@@ -8,6 +8,8 @@ package controller;
  *
  */
 
+import view.Trivia;
+
 public class Start {
-	
+	Trivia.startGame();
 }

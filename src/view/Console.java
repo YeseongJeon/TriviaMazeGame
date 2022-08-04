@@ -102,7 +102,15 @@ public class Console {
     }
     // Now I need to get user input for both the Home Screen and Menu Screen
 
-    public static String inputHomeScreen() {
+    public static String inputFirstPage() {
+        String user = sc.next();
+        final Set<String> set = new HashSet<>(Arrays.asList("1", "2", "3", "4"));
+
+        while (!set.contains(user)) {
+            System.out.println("Invalid input, try again.");
+            user = sc.next();
+        }
+        return user;
 
     }
 
@@ -113,6 +121,15 @@ public class Console {
     // Now lets show the current state of the maze
 
     public static void printMaze(final Maze ourMaze) {
+        System.out.println(ourMaze);
+        // tell player now where they are currently at
+
+        System.out.println("Your current position in the maze is at" + ourMaze.getRIndex() + " row and" + ourMaze.getCindex() + " column.");
+
+        System.out.println("Please select any door");
+
+        System.out.println(ourMaze.getCurrAvailDoors());
+
 
     }
 
@@ -123,9 +140,11 @@ public class Console {
     public static String playerInput(){
 
     }
+
+
     public static String getFileName() {
         System.out.println("Please enter the name of the file: ");
-        final String filename = SC.next();
+        final String filename = sc.next();
         return filename;
     }
     public static void printWonOrLost(final boolean mazePlayer) {
@@ -147,5 +166,4 @@ public class Console {
                     "░░░╚═╝░░░░╚════╝░░╚═════╝░  ╚══════╝░╚════╝░╚═════╝░░░░╚═╝░░░╚═╝  ");
         }
     }
-
 }
