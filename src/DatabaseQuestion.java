@@ -26,8 +26,10 @@ public class DatabaseQuestion {
 	        
 	        
 	        //now create a table
-	        String query = "CREATE TABLE IF NOT EXISTS questions ( " +
+	        String query = "CREATE TABLE IF NOT EXISTS MultipleChoice ( " +
+	        		"ID TEXT NOT NULL, " +
 	                "QUESTION TEXT NOT NULL, " +
+	                "OPTIONS TEXT NOT NULL, " +
 	                "ANSWER TEXT NOT NULL )";
 	        try ( Connection conn = ds.getConnection();
 	                Statement stmt = conn.createStatement(); ) {
@@ -41,10 +43,9 @@ public class DatabaseQuestion {
 	        
 	        //next insert two rows of data
 //	        System.out.println( "Attempting to insert two rows into questions table" );
-
-//	        String query1 = "INSERT INTO questions ( QUESTION, ANSWER ) VALUES ( 'The 9/11 terror in New York, happened on September 11th, 2001.', 'True' )";
-//	        String query2 = "INSERT INTO questions ( QUESTION, ANSWER ) VALUES ( 'The person depicted on the 100 dollar bill is Donald Trump.', 'False' )";
-//	        String query3 = "INSERT INTO questions ( QUESTION, ANSWER ) VALUES ( 'The first president of USA is George Washington.', 'True' )";
+//
+//	        String query1 = "INSERT INTO MultipleChoice ( ID, QUESTION, OPTIONS, ANSWER ) VALUES ( '1', 'what is ', 'what is ', 'Yes' )";
+//	        String query2 = "INSERT INTO MultipleChoice ( ID, QUESTION, OPTIONS, ANSWER ) VALUES ( '2', 'what is the', 'what is ', 'True' )";
 //
 //	        try ( Connection conn = ds.getConnection();
 //	              Statement stmt = conn.createStatement(); ) {
@@ -53,18 +54,17 @@ public class DatabaseQuestion {
 //
 //	            rv = stmt.executeUpdate( query2 );
 //	            System.out.println( "2nd executeUpdate() returned " + rv );
-//	          
-//	            rv = stmt.executeUpdate( query3 );
-//              System.out.println( "3nd executeUpdate() returned " + rv );
+//	         
 //	        } catch ( SQLException e ) {
 //	            e.printStackTrace();
 //	            System.exit( 0 );
 //	        }
 	        
+	          
 	        
 	        //now query the database table for all its contents and display the results
 	        System.out.println( "Selecting all rows from test table" );
-	        query = "SELECT * FROM questions";
+	        query = "SELECT * FROM MultipleChoice";
 
 	        try ( Connection conn = ds.getConnection();
 	              Statement stmt = conn.createStatement(); ) {
@@ -76,8 +76,9 @@ public class DatabaseQuestion {
 	            while ( rs.next() ) {
 	                String question = rs.getString( "QUESTION" );
 	                String answer = rs.getString( "ANSWER" );
+	                String options = rs.getString( "OPTIONS" );
 
-	                System.out.println( "Result: Question = " + question +
+	                System.out.println( "Result: Question = " + question + " Options = " + options +
 	                    ", Answer = " + answer );
 	            }
 	        } catch ( SQLException e ) {
