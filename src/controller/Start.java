@@ -11,5 +11,7 @@ package controller;
 import view.Trivia;
 
 public class Start {
-	Trivia.startGame();
+	public static void main (String[] args){
+		Trivia.startGame();
+	}
 }

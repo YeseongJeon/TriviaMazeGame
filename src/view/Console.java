@@ -1,4 +1,5 @@
 package view;
+
 import model.Maze;
 
 import java.util.*;
@@ -13,8 +14,8 @@ public class Console {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    private static final String QUIT_BUTTON = "Q";
-    private static final String MAIN_MENU_BUTTON = "M";
+    private static final char QUIT_BUTTON = 'Q';
+    private static final char MAIN_MENU_BUTTON = 'M';
 
     public static void printFirstPage() {
 
@@ -115,38 +116,54 @@ public class Console {
     }
 
     public static String inputMenuScreen() {
-
+        String menusInput = sc.next();
+        final Set<String> options = new HashSet<>(Arrays.asList("1", "2", "3", "4", "5"));
+        while (!options.contains(menusInput)) {
+            System.out.println("INCORRECT INPUT, Try Again");
+            menusInput = sc.next();
+        }
+        return menusInput;
     }
 
     // Now lets show the current state of the maze
-
     public static void printMaze(final Maze ourMaze) {
         System.out.println(ourMaze);
         // tell player now where they are currently at
-
         System.out.println("Your current position in the maze is at" + ourMaze.getRIndex() + " row and" + ourMaze.getCindex() + " column.");
 
         System.out.println("Please select any door");
 
         System.out.println(ourMaze.getCurrAvailDoors());
-
-
     }
 
-    public static char getUsrDirec(){
+    public static char getUsrDirec(final Maze ourMaze) {
+        final Set<Character> set = new HashSet<>();
+        for (char ch : ourMaze.getCurrentAvailableDoors()) {
+            set.add(ch);
+        }
+        set.add(MAIN_MENU_BUTTON);
+        set.add(QUIT_BUTTON);
 
+        char next = Character.toUpperCase(sc.next().charAt(0));
+        while (!set.contains(next)) {
+            System.out.println("Invalid input, try again!");
+            next = Character.toUpperCase(sc.next().charAt(0));
+        }
+        return next;
     }
 
-    public static String playerInput(){
-
+    public static String getplayerInput() {
+        System.out.println("Your Answer:");
+        final String player1 = sc.next();
+        return player1.toLowerCase();
     }
-
 
     public static String getFileName() {
         System.out.println("Please enter the name of the file: ");
         final String filename = sc.next();
         return filename;
     }
+
     public static void printWonOrLost(final boolean mazePlayer) {
         if (mazePlayer) {
             System.out.println("\n" +
