@@ -55,8 +55,8 @@ public class Trivia implements Serializable {
                 GenerateRandomQuestions grq = new GenerateRandomQuestions();
                 Question q = grq.createQuestion();
 
-                System.out.println(q); // prints question from table
-                System.out.println(q.getAnswer()); // gets the answer from table
+                System.out.println(q.getQuestion()); // prints question from table
+                System.out.println(q.getChoices()); // gets the answer from table
                 String playerAnswer = Console.getplayerInput();
 
                 while (playerAnswer.equals("M") || playerAnswer.equals("?")) {
