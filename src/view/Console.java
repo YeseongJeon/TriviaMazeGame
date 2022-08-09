@@ -129,11 +129,11 @@ public class Console {
     public static void printMaze(final Maze ourMaze) {
         System.out.println(ourMaze);
         // tell player now where they are currently at
-        System.out.println("Your current position in the maze is at" + ourMaze.getRIndex() + " row and" + ourMaze.getCindex() + " column.");
+        System.out.println("Your current position in the maze is at" + ourMaze.getRowIndex() + " row and" + ourMaze.getColindex() + " column.");
 
         System.out.println("Please select any door");
 
-        System.out.println(ourMaze.getCurrAvailDoors());
+        System.out.println(ourMaze.getCurrentAvailableDoors());
     }
 
     public static char getUsrDirec(final Maze ourMaze) {
