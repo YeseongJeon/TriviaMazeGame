@@ -13,7 +13,7 @@ public class Question {
 	private final String myAnswer;
 	private final String myChoices;
 	
-	public Question(String question, String answer, String choices) {
+	public Question(final String theQuestion, final String theAnswer, final String theChoices) {
 		this.myQuestion = question;
 		this.myAnswer = answer;
 		this.myChoices = choices;
