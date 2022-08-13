@@ -146,7 +146,7 @@ public class Console {
 
         char next = Character.toUpperCase(sc.next().charAt(0));
         while (!set.contains(next)) {
-            System.out.println("Invalid input, try again!");
+            System.out.println("Incorrect Answer! The Door is Locked!");
             next = Character.toUpperCase(sc.next().charAt(0));
         }
         return next;
