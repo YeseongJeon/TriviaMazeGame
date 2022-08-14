@@ -1,14 +1,14 @@
-/*
 package view;
 
 import model.*;
 
 import java.io.*;
 import java.util.Scanner;
-*/
-/* * The Trivia class is responsible for constructing the maze, room, question database &  GUI.
+/*
+ * The Trivia class is responsible for constructing the maze, room, question database &  GUI.
  * This allows the capabilities to incorporate beginning games, call another  game,
- * save game, load game, open menu, and get the users' decision.*//*
+ * save game, load game, open menu, and get the users' decision.
+*/
 
 
 
@@ -176,4 +176,3 @@ public class Trivia implements Serializable {
     }
 
 }
-*/
