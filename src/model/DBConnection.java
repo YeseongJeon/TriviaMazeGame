@@ -80,15 +80,15 @@ public class DBConnection {
 		}
 	}
 
-	public ArrayList<Question> getTrueFalseQuestions() {
+	public static ArrayList<Question> getTrueFalseQuestions() {
 		return trueFalseQuestions;
 	}
 	
-	public ArrayList<Question> getShortAnswerQuestions() {
+	public static ArrayList<Question> getShortAnswerQuestions() {
 		return shortAnswerQuestions;
 	}
 	
-	public ArrayList<Question> getMultQuestions() {
+	public static ArrayList<Question> getMultQuestions() {
 		return multQuestions;
 	}
 }

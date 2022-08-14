@@ -8,10 +8,10 @@ package controller;
  *
  */
 
-import view.Trivia;
-
 public class Start {
 	public static void main (String[] args){
-		Trivia.startGame();
+		// Trivia.startGame();
+
+
 	}
 }

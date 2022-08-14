@@ -10,6 +10,7 @@ import java.util.*;
  * Version 1.0
  */
 
+
 public class Console {
 
     private static final Scanner sc = new Scanner(System.in);
