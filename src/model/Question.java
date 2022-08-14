@@ -19,7 +19,7 @@ public class Question {
 		this.myChoices = choices;
 	}
 	
-	public String getQuestion() {
+	public  String getQuestion() {
 		return myQuestion;
 	}
 	

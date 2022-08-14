@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList; 
 import java.util.Random;
 
-public class GenerateRandomQuestions {
+public class GenerateRandomQuestions{
 	private static int optionNumber = 1;
 	private static int index = 1;
 	

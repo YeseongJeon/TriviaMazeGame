@@ -1,14 +1,17 @@
+/*
 package view;
 
 import model.Maze;
 
 import java.util.*;
 
+*/
 /* This class will be responsible for many of our Console based interface needs
  *
  * author Liban Jama
  * Version 1.0
- */
+ *//*
+
 
 
 public class Console {
@@ -185,3 +188,4 @@ public class Console {
         }
     }
 }
+*/
