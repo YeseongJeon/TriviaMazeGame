@@ -1,21 +1,25 @@
 package model;
 
-import java.sql.Connection; 
+import org.sqlite.SQLiteDataSource;
+
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.sqlite.SQLiteDataSource;
-
 public class DBConnection {
 
 	static DBConnection myQuestionDatabase; 
 
-	final static ArrayList<Question> trueFalseQuestions = new ArrayList<>();
+	 final static ArrayList<Question> trueFalseQuestions = new ArrayList<>();
 	final static ArrayList<Question> shortAnswerQuestions = new ArrayList<>();
 	final static ArrayList<Question> multQuestions = new ArrayList<>();
 
+	/** This is the initial constructor for this class
+	 * Will return the instance of the datbase
+	 * @return myQuestionDatabase
+	 */
 	public static DBConnection getInstance() {
 		if(myQuestionDatabase == null) {
 			myQuestionDatabase = new DBConnection();
