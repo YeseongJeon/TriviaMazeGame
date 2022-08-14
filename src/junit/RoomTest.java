@@ -6,6 +6,7 @@ public class RoomTest {
 
     @Test
     public void statusOfDoors() {
+        DBConnection.getcon
     }
 
     @Test

@@ -44,6 +44,7 @@ public class Room implements Serializable{
      * @return the doors and whether they are open or not.
      */
     public Map<Character, Boolean> statusOfDoors() {
+
         return myDoors;
     }
 
@@ -57,9 +58,10 @@ public class Room implements Serializable{
 
     /**
      * Method will see if the door is locked
-     * @return true if locked, flase if open.
+     * @return true if locked, false if open.
      */
     public boolean doorLocked(){
+
         return myDoors.size() == 0;
     }
 
@@ -92,6 +94,7 @@ public class Room implements Serializable{
      * @return set with available doors
      */
     public Set<Character> getAvailableDoors(){
+
         return new HashSet<>(myDoors.keySet());
     }
 
