@@ -1,25 +1,36 @@
 package model;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This will generate the random question that will be displayed on the users screen
+ * It will create random index to choose random Question list. 
+ * 
+ * @author Yeseong Jeon
+ * @version 1.0 TCSS 360(Summer 2022)
+ */
+
 public class GenerateRandomQuestions {
-	private static int optionNumber = 1;
 	private static int index = 1;
 	
+	/**
+	 * Selects a random question list 
+     * And returns the question from the list by using generateQuestion method
+	 * @return the selected random question
+	 */
 	public static Question createQuestion() {
 		final Random ran = new Random();
 		int option = ran.nextInt(3);
-		String[] choose = {"TrueOrFalse", "ShortAnswer", "MultipleChoice" };
-		optionNumber = option;
+		String[] choose = {"TrueOrFalse", "ShortAnswer", "MultipleChoice"};
 		return generateQuestion(choose[option]);
 	}
-
-
-	public static int getRandomSelection() {
-		return optionNumber;
-	}
-
+	
+	/**
+	 * Generates a question depending on the argument
+     * And returns the question that's randomly generated
+	 * @return the generated question
+	 */
 	public static Question generateQuestion(final String type) {
 		final DBConnection db = DBConnection.getInstance();
 		final Question question;
