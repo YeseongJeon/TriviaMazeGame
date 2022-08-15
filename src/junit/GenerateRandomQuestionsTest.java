@@ -14,15 +14,8 @@ public class GenerateRandomQuestionsTest {
         assertNotEquals(GenerateRandomQuestions.createQuestion(), null);
 
     }
-
     @Test
-    public void getRandomSelection() {
-
-        assertNotEquals(GenerateRandomQuestions.getRandomSelection(), null);
-    }
-
-  /*  @Test
     public void generateQuestion() {
-        assertNotEquals(GenerateRandomQuestions.generateQuestion(), null);
-    }*/
+     //   assertNotEquals(GenerateRandomQuestions.generateQuestion(), null);
+    }
 }

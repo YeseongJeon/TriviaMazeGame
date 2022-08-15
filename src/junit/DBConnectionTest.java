@@ -1,17 +1,16 @@
 package junit;
-
-import model.DBConnection;
-import model.GenerateRandomQuestions;
-import model.Question;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import model.DBConnection;
+import model.GenerateRandomQuestions;
+import model.Question;
 
 public class DBConnectionTest {
     private static DBConnection dbQuestions;
