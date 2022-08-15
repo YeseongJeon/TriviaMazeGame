@@ -175,30 +175,3 @@ public class Trivia implements Serializable {
         }
 
     }
-
-/*
-
-Console.printFirstPage();
-
-final String firstPageInput = Console.inputFirstPage();
-
-        switch (firstPageInput) {
-        case "1":
-        Maze maze = new Maze();
-        System.out.println("New Game has been selected");
-        newGame(maze);
-        break;
-        case "2":
-        System.out.println("Loading Previous Game");
-        newGame(loadGame());
-        break;
-        case "3":
-        Console.printHelpScreen();
-        startGame();
-        break;
-        case "4":
-        break;
-default:
-        System.out.println("WRONG INPUT, TRY AGAIN by entering a number between 1 and 4");
-        break;
-        }*/

@@ -17,6 +17,7 @@ public class Console {
     private static final char QUIT_BUTTON = 'Q';
     private static final char MAIN_MENU_BUTTON = 'M';
 
+
     public static void printFirstPage() {
 
 
