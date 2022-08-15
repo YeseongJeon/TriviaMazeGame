@@ -60,7 +60,7 @@ public class Maze implements Serializable{
     public Maze(final int theRows, final int theCols) {
 
         if (theRows < 0 || theCols < 0 || theRows != theCols) {
-            throw new IllegalArgumentException("Error: The maze dimensions are supposed to be equal (e.g; 4x4");
+            throw new IllegalArgumentException("ERROR: MAZE DIMENSIONS ARE NOT EQUAL!!!!!");
         }
         myCurrentRooms = create(theRows, theCols);
         myCurrentRow = 0;
@@ -79,28 +79,28 @@ public class Maze implements Serializable{
             for (int j = 0; j < theRow; j++) {
                 if (i == 0) {
                     if (j == 0) {
-                        rooms[i][j] = new Room(new char[] {'S', 'D'});
+                        rooms[i][j] = new Room(new char[] {'S', 'E'});
                     } else if (j < theRow - 1) {
-                        rooms[i][j] = new Room(new char[] { 'A', 'S', 'D' });
+                        rooms[i][j] = new Room(new char[] { 'W', 'S', 'N' });
                     } else {
-                        rooms[i][j] = new Room(new char[] { 'A', 'S' });
+                        rooms[i][j] = new Room(new char[] { 'W', 'S' });
                     }
                 } else if (j == 0 && i > 0) {
                     if (i < theRow - 1) {
-                        rooms[i][j] = new Room(new char[] { 'W', 'D', 'S' });
+                        rooms[i][j] = new Room(new char[] { 'N', 'E', 'S' });
                     } else {
-                        rooms[i][j] = new Room(new char[] { 'W', 'D' });
+                        rooms[i][j] = new Room(new char[] { 'N', 'E' });
                     }
                 } else if (j > 0 && i == theRow - 1) {
                     if (j < theRow - 1) {
-                        rooms[i][j] = new Room(new char[] { 'A', 'W', 'D' });
+                        rooms[i][j] = new Room(new char[] { 'W', 'N', 'E' });
                     } else {
-                        rooms[i][j] = new Room(new char[] { 'W', 'A' });
+                        rooms[i][j] = new Room(new char[] { 'N', 'W' });
                     }
                 } else if (j == theRow - 1 && (i > 0 && i < theRow - 1)) {
-                    rooms[i][j] = new Room(new char[] { 'W', 'S', 'A' });
+                    rooms[i][j] = new Room(new char[] { 'N', 'S', 'W' });
                 } else {
-                    rooms[i][j] = new Room(new char[] { 'W', 'S', 'D', 'A' });
+                    rooms[i][j] = new Room(new char[] { 'N', 'S', 'E', 'W' });
                 }
             }
         }
@@ -131,14 +131,14 @@ public class Maze implements Serializable{
         char myDir = Character.toUpperCase(theDirection);
         if (myDir == 'S' && moveDown()) {
             myCurrentRow++;
-        } else if (myDir == 'D' && moveRight()) {
+        } else if (myDir == 'E' && moveRight()) {
             myCurrentCol++;
-        } else if (myDir == 'A' && moveLeft()) {
+        } else if (myDir == 'W' && moveLeft()) {
             myCurrentCol--;
-        } else if (myDir == 'W' && moveUp()) {
+        } else if (myDir == 'N' && moveUp()) {
             myCurrentRow--;
         } else {
-            throw new IllegalArgumentException("Error: Unable to move in this direction.");
+            throw new IllegalArgumentException("ERROR NOT ABLE TO MOVE!!!");
         }
         myDisplayMaze[myCurrentRow][myCurrentCol] = '*';
     }
@@ -164,47 +164,47 @@ public class Maze implements Serializable{
 
     public void unlock(char theChar) {
         theChar = Character.toUpperCase(theChar);
-        myCurrentRooms[row][col].openDoor(theChar);
+        myCurrentRooms[myCurrentRow][myCurrentCol].openDoor(theChar);
 
         if (theChar == 'A') {
-            myCurrentRooms[row][col - 1].openDoor('D');
+            myCurrentRooms[myCurrentRow][myCurrentCol - 1].openDoor('E');
         } else if (theChar == 'S') {
-            myCurrentRooms[row + 1][col].openDoor('W');
+            myCurrentRooms[myCurrentRow + 1][myCurrentCol].openDoor('N');
         } else if (theChar == 'D') {
-            myCurrentRooms[row][col + 1].openDoor('A');
+            myCurrentRooms[myCurrentRow][myCurrentCol + 1].openDoor('W');
         } else if (theChar == 'W') {
-            myCurrentRooms[row - 1][col].openDoor('S');
+            myCurrentRooms[myCurrentRow - 1][myCurrentCol].openDoor('S');
         }
     }
 
 
     public boolean isLastRoom() {
         final int len = size();
-        return row == len - 1 && col == len - 1;
+        return myCurrentRow == len - 1 && myCurrentCol == len - 1;
     }
 
 
     public boolean isCurrentRoomLocked() {
-        return myCurrentRooms[row][col].doorStatus();
+        return myCurrentRooms[myCurrentRow][myCurrentCol].doorLocked();
     }
 
 
     public boolean isCurrentRoomDoorOpen(char ch) {
-        return myCurrentRooms[row][col].unlocked(ch);
+        return myCurrentRooms[myCurrentRow][myCurrentCol].isOpened(ch);
     }
 
 
     public void deleteCurrentRoomDoor(char theChar) {
-        myCurrentRooms[row][col].deleteDoor(theChar);
+        myCurrentRooms[myCurrentRow][myCurrentCol].deleteDoor(theChar);
 
         if (theChar == 'A') {
-            myCurrentRooms[row][col - 1].deleteDoor('D');
+            myCurrentRooms[myCurrentRow][myCurrentCol - 1].deleteDoor('D');
         } else if (theChar == 'S') {
-            myCurrentRooms[row + 1][col].deleteDoor('W');
+            myCurrentRooms[myCurrentRow + 1][myCurrentCol].deleteDoor('W');
         } else if (theChar == 'D') {
-            myCurrentRooms[row][col + 1].deleteDoor('A');
+            myCurrentRooms[myCurrentRow][myCurrentCol + 1].deleteDoor('A');
         } else if (theChar == 'W') {
-            myCurrentRooms[row - 1][col].deleteDoor('S');
+            myCurrentRooms[myCurrentRow - 1][myCurrentCol].deleteDoor('S');
         }
     }
 
@@ -218,7 +218,7 @@ public class Maze implements Serializable{
     }
 
     public Set<Character> getCurrentAvailableDoors() {
-        return myCurrentRooms[row][col].getAvailableDoors();
+        return myCurrentRooms[myCurrentRow][myCurrentCol].getAvailableDoors();
     }
 
     public int size() {
