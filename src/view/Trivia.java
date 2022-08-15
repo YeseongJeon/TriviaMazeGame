@@ -5,20 +5,19 @@ import model.Maze;
 import model.Question;
 
 import java.io.*;
-/*
- * The Trivia class is responsible for constructing the maze, room, question database &  GUI.
- * This allows the capabilities to incorporate beginning games, call another  game,
- * save game, load game, open menu, and get the users' decision.
- */
-
 public class Trivia implements Serializable {
 
     static long serialVersionUID = 112L;
     // static Scanner scan = new Scanner(System.in);
     static int steps;
 
-    // current location of user and ability to see next move
-    public static char currPlayer(Maze maze) {
+    /**
+     * This function prints the maze, and then gets the user's direction
+     *
+     * @param maze the maze object
+     * @return The player's choice of direction.
+     */
+    public static char currentPlayer(Maze maze) {
         Console.printMaze(maze);
 
         char playeroption = Console.getUsrDirec(maze);
@@ -26,6 +25,18 @@ public class Trivia implements Serializable {
         return playeroption;
     }
 
+    /**
+     * The function takes in a maze object and then it checks if the player is in the last room or if the current room is
+     * locked. If the player is in the last room or the current room is locked, the function will print out a message
+     * saying that the player has won or lost. If the player is not in the last room and the current room is not locked,
+     * the function will then check if the player has taken 10 steps. If the player has taken 10 steps, the function will
+     * print out a warning message saying that the player only has 4 moves left. If the player has not taken 10 steps, the
+     * function will then check if the player has taken 15 steps. If the player has taken 15 steps, the function will break
+     * out of the loop. If the player has not taken 15 steps, the function will then check if the player has clicked on the
+     * mainMenu button. If the player has clicked on the mainMenu button, the function will call the mainMenu function and then check
+     *
+     * @param maze the maze object that is created in the main method.
+     */
     public static void newGame(Maze maze) {
         steps = 0;
         while (!maze.isLastRoom() && !maze.isCurrentRoomLocked()) {
@@ -37,16 +48,16 @@ public class Trivia implements Serializable {
                 System.out.println();
             }
             int result = 0;
-            char playerClick = currPlayer(maze);
+            char playerClick = currentPlayer(maze);
             if (playerClick == 'Q')
                 break;
             while (playerClick == 'M') {
                 if (playerClick == 'M') {
-                    if (!menu(maze)) {
+                    if (!mainMenu(maze)) {
                         result = 3;
                         break;
                     }
-                    playerClick = currPlayer(maze);
+                    playerClick = currentPlayer(maze);
                 }
             }
             if (result == 4)
@@ -56,13 +67,13 @@ public class Trivia implements Serializable {
                 GenerateRandomQuestions grq = new GenerateRandomQuestions();
                 Question q = grq.createQuestion();
 
-                System.out.println(q.getQuestion()); // prints question from table
-                System.out.println(q.getChoices()); // gets the answer from table
+                System.out.println(q.getQuestion());
+                System.out.println(q.getChoices());
                 String playerAnswer = Console.getplayerInput();
 
                 while (playerAnswer.equals("M") || playerAnswer.equals("?")) {
                     if (playerAnswer.equals("M")) {
-                        if (menu(maze) == false) {
+                        if (mainMenu(maze) == false) {
                             result = 4;
                             break;
                         }
@@ -89,7 +100,10 @@ public class Trivia implements Serializable {
         Console.printWonOrLost(maze.isLastRoom());
     }
 
-    // initiate the start of the game by displaying the home page
+    /**
+     * The function starts the game by printing the first page, then it takes the user's input and depending on the input,
+     * it either starts a new game, loads a previous game, prints the help screen or exits the game
+     */
     public static void startGame() {
 
         Console.printFirstPage();
@@ -118,6 +132,12 @@ public class Trivia implements Serializable {
         }
     }
 
+    /**
+     * The function takes in a maze object and saves it to a file with the name of the file being the name of the maze
+     * object
+     *
+     * @param maze The maze object that is to be saved.
+     */
     public static void saveGame(Maze maze) {
         try {
             FileOutputStream outputStream = new FileOutputStream(Console.getFileName() + ".ser");
@@ -131,7 +151,12 @@ public class Trivia implements Serializable {
         }
     }
 
-    public static Maze loadGame() {
+    /**
+     * This function takes in a file name, and returns a maze object
+     *
+     * @return The maze object is being returned.
+     */
+    public static Maze loadGame() throws NullPointerException{
         Maze maze = null;
         try {
             FileInputStream grabFile = new FileInputStream(Console.getFileName() + ".ser");
@@ -151,7 +176,13 @@ public class Trivia implements Serializable {
 
     }
 
-    public static boolean menu(Maze maze) {
+    /**
+     * The main menu method takes a Maze object as an argument and returns a boolean
+     *
+     * @param maze The maze object that is being used in the game.
+     * @return A boolean value.
+     */
+    public static boolean mainMenu(Maze maze) {
         Console.printMenuScreen();
         final String menuChoice = Console.inputMenuScreen();
         switch (menuChoice) {

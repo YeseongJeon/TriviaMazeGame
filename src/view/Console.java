@@ -18,6 +18,9 @@ public class Console {
     private static final char MAIN_MENU_BUTTON = 'M';
 
 
+    /**
+     * This function prints out the first page of the game
+     */
     public static void printFirstPage() {
 
 
@@ -50,6 +53,9 @@ public class Console {
                 "NEW GAME (Press 1)      LOAD GAME (Press 2)      HELP SCREEN (Press 3)      QUIT (Press 4)");
     }
 
+    /**
+     * This function prints the main mainMenu screen
+     */
     public static void printMenuScreen() {
 
         System.out.println("\n" +
@@ -67,6 +73,9 @@ public class Console {
 
     }
 
+    /**
+     * This function prints out the help screen for the user to see
+     */
     public static void printHelpScreen() {
 
         System.out.println("\n" +
@@ -102,8 +111,13 @@ public class Console {
         System.out.println();
 
     }
-    // Now I need to get user input for both the Home Screen and Menu Screen
 
+    /**
+     * This function takes in a user input and checks if it is a valid input. If it is not, it will ask the user to input
+     * again
+     *
+     * @return A string
+     */
     public static String inputFirstPage() {
         String user = sc.next();
         final Set<String> set = new HashSet<>(Arrays.asList("1", "2", "3", "4"));
@@ -116,6 +130,12 @@ public class Console {
 
     }
 
+    /**
+     * This function takes in a user input and checks if it is one of the options in the mainMenu. If it is not, it will ask
+     * the user to input again
+     *
+     * @return The input from the user.
+     */
     public static String inputMenuScreen() {
         String menusInput = sc.next();
         final Set<String> options = new HashSet<>(Arrays.asList("1", "2", "3", "4", "5"));
@@ -126,7 +146,11 @@ public class Console {
         return menusInput;
     }
 
-    // Now lets show the current state of the maze
+    /**
+     * This function prints out the maze, the current position of the player, and the available doors
+     *
+     * @param ourMaze the maze object that we are currently working with
+     */
     public static void printMaze(final Maze ourMaze) {
         System.out.println(ourMaze);
         // tell player now where they are currently at
@@ -136,11 +160,14 @@ public class Console {
 
         System.out.println(ourMaze.getCurrentAvailableDoors());
     }
-   /*
-     Getting users direction
-     from uppercase
 
-    */
+    /**
+     * This function takes in a Maze object and returns a character that is either a direction, the main mainMenu button, or
+     * the quit button
+     *
+     * @param ourMaze The maze that the user is currently in.
+     * @return A character
+     */
     public static char getUsrDirec(final Maze ourMaze) {
         final Set<Character> set = new HashSet<>();
         for (char ch : ourMaze.getCurrentAvailableDoors()) {
@@ -157,18 +184,34 @@ public class Console {
         return next;
     }
 
+    /**
+     * This function gets the player's input and returns it as a string
+     *
+     * @return The player's input.
+     */
     public static String getplayerInput() {
         System.out.println("Your Answer:");
         final String player1 = sc.next();
         return player1.toLowerCase();
     }
 
+    /**
+     * This function prompts the user to enter the name of the file and returns the name of the file
+     *
+     * @return The name of the file.
+     */
     public static String getFileName() {
         System.out.println("Please enter the name of the file: ");
         final String filename = sc.next();
         return filename;
     }
 
+
+    /**
+     * If the mazePlayer is true, print the ASCII art for winning, otherwise print the ASCII art for losing
+     *
+     * @param mazePlayer true if the player won, false if the player lost
+     */
     public static void printWonOrLost(final boolean mazePlayer) {
         if (mazePlayer) {
             System.out.println("\n" +
