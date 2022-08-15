@@ -21,7 +21,7 @@ public class Room implements Serializable{
      * Constructor and initializer for the room
      * @param theDirections All possible direction values for the room
      */
-    public Rooms(final char[] theDirections){
+    public Room(final char[] theDirections){
         Objects.requireNonNull(theDirections);
         myDoors = buildRoom(theDirections);
     }
