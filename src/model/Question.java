@@ -21,7 +21,7 @@ public class Question {
 	 * @param answer a String containing the answer of the question
 	 * @param choices a String containing the choices of the question
 	 */
-	public Question(final String theQuestion, final String theAnswer, final String theChoices) {
+	public Question(final String question, final String answer, final String choices) {
 		this.myQuestion = question;
 		this.myAnswer = answer;
 		this.myChoices = choices;
