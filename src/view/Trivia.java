@@ -1,9 +1,10 @@
 package view;
 
-import model.*;
+import model.GenerateRandomQuestions;
+import model.Maze;
+import model.Question;
 
 import java.io.*;
-import java.util.Scanner;
 /*
  * The Trivia class is responsible for constructing the maze, room, question database &  GUI.
  * This allows the capabilities to incorporate beginning games, call another  game,
@@ -153,23 +154,51 @@ public class Trivia implements Serializable {
     public static boolean menu(Maze maze) {
         Console.printMenuScreen();
         final String menuChoice = Console.inputMenuScreen();
-
         switch (menuChoice) {
-            case "1":
-                saveGame(maze);
-                return true;
-            case "2":
-                startGame();
-                return true;
-            case "3":
-                return true;
-            case "4":
-                Console.printHelpScreen();
-                break;
-            default:
-                return false;
+                case "1":
+                    saveGame(maze);
+                    return true;
+                case "2":
+                    startGame();
+                    return true;
+                case "3":
+                    return true;
+                case "4":
+                    Console.printHelpScreen();
+                    break;
+            case "5":
+                System.exit(0);
+                default:
+                    return false;
+            }
+            return true;
         }
-        return true;
+
     }
 
-}
+/*
+
+Console.printFirstPage();
+
+final String firstPageInput = Console.inputFirstPage();
+
+        switch (firstPageInput) {
+        case "1":
+        Maze maze = new Maze();
+        System.out.println("New Game has been selected");
+        newGame(maze);
+        break;
+        case "2":
+        System.out.println("Loading Previous Game");
+        newGame(loadGame());
+        break;
+        case "3":
+        Console.printHelpScreen();
+        startGame();
+        break;
+        case "4":
+        break;
+default:
+        System.out.println("WRONG INPUT, TRY AGAIN by entering a number between 1 and 4");
+        break;
+        }*/

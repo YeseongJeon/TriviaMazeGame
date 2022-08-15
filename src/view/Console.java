@@ -94,10 +94,10 @@ public class Console {
                 "█▀▀ █▀▀█ █▀▀▄ ▀▀█▀▀ █▀▀█ █▀▀█ █── █▀▀ \n" +
                 "█── █──█ █──█ ──█── █▄▄▀ █──█ █── ▀▀█ \n" +
                 "▀▀▀ ▀▀▀▀ ▀──▀ ──▀── ▀─▀▀ ▀▀▀▀ ▀▀▀ ▀▀▀");
-        System.out.println("Press W for moving upwards");
-        System.out.println("Press A for moving to the left");
-        System.out.println("Press S for moving downwards");
-        System.out.println("Press D for moving to the right");
+        System.out.println("Press N for moving to the North!");
+        System.out.println("Press W for moving to the West!");
+        System.out.println("Press S for moving downwards!");
+        System.out.println("Press E for moving to the East!");
         System.out.println();
 
     }
@@ -129,13 +129,17 @@ public class Console {
     public static void printMaze(final Maze ourMaze) {
         System.out.println(ourMaze);
         // tell player now where they are currently at
-        System.out.println("Your current position in the maze is at" + ourMaze.getRowIndex() + " row and" + ourMaze.getColIndex()+ " column.");
+        System.out.println("Your current position in the maze is at row " + ourMaze.getRowIndex() + " and at column " + ourMaze.getColIndex());
 
         System.out.println("Please select any door");
 
         System.out.println(ourMaze.getCurrentAvailableDoors());
     }
+   /*
+     Getting users direction
+     from uppercase
 
+    */
     public static char getUsrDirec(final Maze ourMaze) {
         final Set<Character> set = new HashSet<>();
         for (char ch : ourMaze.getCurrentAvailableDoors()) {
@@ -146,7 +150,7 @@ public class Console {
 
         char next = Character.toUpperCase(sc.next().charAt(0));
         while (!set.contains(next)) {
-            System.out.println("Incorrect Answer! The Door is Locked!");
+            System.out.println("That Direction is now allowed!");
             next = Character.toUpperCase(sc.next().charAt(0));
         }
         return next;

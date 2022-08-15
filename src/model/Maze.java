@@ -5,16 +5,16 @@ import java.util.*;
 /*
  * This will be an extremely Trivial part of our view.Trivia Maze Game.
  * This class will contain a various number of methods.
- * Some of them are a method to first create the maze. 
+ * Some of them are a method to first create the maze.
  * A method to print out that maze that we have just created.
- * A method that allows for the user to change locations. 
- * Also, a method that will determine the current state of the user. 
- * For example, if they have or have not yet completed the game. 
+ * A method that allows for the user to change locations.
+ * Also, a method that will determine the current state of the user.
+ * For example, if they have or have not yet completed the game.
  * These are some of the main methods that shall be within this class.
  */
 
 
-public class Maze implements Serializable{
+public class Maze implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -23,30 +23,18 @@ public class Maze implements Serializable{
     private Room[][] myCurrentRooms;
 
     /**
-     * Position of the current row.
+     * Position of the current row and the column.
      */
-    private int myCurrentRow;
-
+    private int myCurrentRow, myCurrentCol;
     /**
-     * position of the current column
+     * Default sizes for row and column
      */
-    private int myCurrentCol;
+    private static final int myRows = 4, myCol = 4;
 
     /**
      * this 2D array will show the maze
      */
     private final char[][] myDisplayMaze;
-
-    /**
-     * Default row size for the Maze
-     */
-    private static final int myRows = 4;
-
-    /**
-     * Default column size for the Maze
-     */
-    private static final int myCol = 4;
-
 
     public Maze() {
         this(myRows, myCol);
@@ -54,6 +42,7 @@ public class Maze implements Serializable{
 
     /**
      * This is the constructor method will make the maze board by passing in the row & columns they have to be same dimensions
+     *
      * @param theRows
      * @param theCols
      */
@@ -70,6 +59,7 @@ public class Maze implements Serializable{
 
     /**
      * This method is responsible for maximizing the maze  depending on the current location there are different options
+     *
      * @return 2D array
      */
     private Room[][] create(final int theRow, final int theCol) {
@@ -79,32 +69,32 @@ public class Maze implements Serializable{
             for (int j = 0; j < theRow; j++) {
                 if (i == 0) {
                     if (j == 0) {
-                        rooms[i][j] = new Room(new char[] {'S', 'E'});
+                        rooms[i][j] = new Room(new char[]{'S', 'E'});
                     } else if (j < theRow - 1) {
-                        rooms[i][j] = new Room(new char[] { 'W', 'S', 'N' });
+                        rooms[i][j] = new Room(new char[]{'W', 'S', 'N'});
                     } else {
-                        rooms[i][j] = new Room(new char[] { 'W', 'S' });
+                        rooms[i][j] = new Room(new char[]{'W', 'S'});
                     }
                 } else if (j == 0 && i > 0) {
                     if (i < theRow - 1) {
-                        rooms[i][j] = new Room(new char[] { 'N', 'E', 'S' });
+                        rooms[i][j] = new Room(new char[]{'N', 'E', 'S'});
                     } else {
-                        rooms[i][j] = new Room(new char[] { 'N', 'E' });
+                        rooms[i][j] = new Room(new char[]{'N', 'E'});
                     }
                 } else if (j > 0 && i == theRow - 1) {
                     if (j < theRow - 1) {
-                        rooms[i][j] = new Room(new char[] { 'W', 'N', 'E' });
+                        rooms[i][j] = new Room(new char[]{'W', 'N', 'E'});
                     } else {
-                        rooms[i][j] = new Room(new char[] { 'N', 'W' });
+                        rooms[i][j] = new Room(new char[]{'N', 'W'});
                     }
                 } else if (j == theRow - 1 && (i > 0 && i < theRow - 1)) {
-                    rooms[i][j] = new Room(new char[] { 'N', 'S', 'W' });
+                    rooms[i][j] = new Room(new char[]{'N', 'S', 'W'});
                 } else {
-                    rooms[i][j] = new Room(new char[] { 'N', 'S', 'E', 'W' });
+                    rooms[i][j] = new Room(new char[]{'N', 'S', 'E', 'W'});
                 }
             }
         }
-        rooms[theRow - 1][theRow - 1] = new Room(new char[] {});
+        rooms[theRow - 1][theRow - 1] = new Room(new char[]{});
         return rooms;
     }
 
@@ -118,8 +108,10 @@ public class Maze implements Serializable{
     private char[][] showMaze(int theRow, int theCol) {
 
         final char[][] result = new char[theRow][theCol];
-        for (char[] arr : result) {
-            Arrays.fill(arr, 'X');
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[i].length; j++) {
+                Arrays.fill(result[j], 'L');
+            }
         }
         result[0][0] = '*';
         return result;
@@ -129,6 +121,7 @@ public class Maze implements Serializable{
     public void move(final char theDirection) {
 
         char myDir = Character.toUpperCase(theDirection);
+        myDisplayMaze[myCurrentRow][myCurrentCol] = 'O';
         if (myDir == 'S' && moveDown()) {
             myCurrentRow++;
         } else if (myDir == 'E' && moveRight()) {
@@ -138,11 +131,10 @@ public class Maze implements Serializable{
         } else if (myDir == 'N' && moveUp()) {
             myCurrentRow--;
         } else {
-            throw new IllegalArgumentException("ERROR NOT ABLE TO MOVE!!!");
+            throw new IllegalArgumentException("Error: Unable to move in this direction.");
         }
         myDisplayMaze[myCurrentRow][myCurrentCol] = '*';
     }
-
 
     public boolean moveDown() {
         return myCurrentRow + 1 < size();
@@ -166,17 +158,24 @@ public class Maze implements Serializable{
         theChar = Character.toUpperCase(theChar);
         myCurrentRooms[myCurrentRow][myCurrentCol].openDoor(theChar);
 
-        if (theChar == 'A') {
-            myCurrentRooms[myCurrentRow][myCurrentCol - 1].openDoor('E');
-        } else if (theChar == 'S') {
-            myCurrentRooms[myCurrentRow + 1][myCurrentCol].openDoor('N');
-        } else if (theChar == 'D') {
-            myCurrentRooms[myCurrentRow][myCurrentCol + 1].openDoor('W');
-        } else if (theChar == 'W') {
-            myCurrentRooms[myCurrentRow - 1][myCurrentCol].openDoor('S');
+        switch (theChar) {
+            case 'W':
+                myCurrentRooms[myCurrentRow][myCurrentCol - 1].openDoor('E');
+                break;
+            case 'S':
+                myCurrentRooms[myCurrentRow + 1][myCurrentCol].openDoor('N');
+                break;
+            case 'E':
+                myCurrentRooms[myCurrentRow][myCurrentCol + 1].openDoor('W');
+                break;
+            case 'N':
+                myCurrentRooms[myCurrentRow - 1][myCurrentCol].openDoor('S');
+                break;
+            default:
+                break;
+
         }
     }
-
 
     public boolean isLastRoom() {
         final int len = size();
@@ -197,13 +196,13 @@ public class Maze implements Serializable{
     public void deleteCurrentRoomDoor(char theChar) {
         myCurrentRooms[myCurrentRow][myCurrentCol].deleteDoor(theChar);
 
-        if (theChar == 'A') {
-            myCurrentRooms[myCurrentRow][myCurrentCol - 1].deleteDoor('D');
+        if (theChar == 'W') {
+            myCurrentRooms[myCurrentRow][myCurrentCol - 1].deleteDoor('E');
         } else if (theChar == 'S') {
-            myCurrentRooms[myCurrentRow + 1][myCurrentCol].deleteDoor('W');
-        } else if (theChar == 'D') {
-            myCurrentRooms[myCurrentRow][myCurrentCol + 1].deleteDoor('A');
-        } else if (theChar == 'W') {
+            myCurrentRooms[myCurrentRow + 1][myCurrentCol].deleteDoor('N');
+        } else if (theChar == 'E') {
+            myCurrentRooms[myCurrentRow][myCurrentCol + 1].deleteDoor('W');
+        } else if (theChar == 'N') {
             myCurrentRooms[myCurrentRow - 1][myCurrentCol].deleteDoor('S');
         }
     }
@@ -235,9 +234,13 @@ public class Maze implements Serializable{
 
     public String toString() {
         final StringBuilder str = new StringBuilder();
+
         for (char[] ch : myDisplayMaze) {
             str.append(Arrays.toString(ch)).append("\n");
         }
         return str.toString();
     }
 }
+
+
+

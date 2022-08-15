@@ -13,7 +13,7 @@ import java.io.*;
 public class Room implements Serializable{
 	private static final long serialVersionUID = 1l;
     /**
-     * The Doors directions, W=Up, A=Left, S=Down, D=Right
+     * The Doors directions
      */
     private final Map<Character, Boolean> myDoors;
 
