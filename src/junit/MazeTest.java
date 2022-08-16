@@ -88,7 +88,7 @@ public class MazeTest {
     @Test
     public void showMazeInitializedToLTest() {
         Maze maze = new Maze(4, 4);
-        char[][] result = maze.getMaze(4, 4);
+        char[][] result = maze.showMaze(4, 4);
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[i].length; j++) {
                 assertEquals('L', result[i][j]);
