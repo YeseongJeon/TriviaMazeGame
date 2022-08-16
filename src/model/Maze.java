@@ -71,7 +71,7 @@ public class Maze implements Serializable {
                     if (j == 0) {
                         rooms[i][j] = new Room(new char[]{'S', 'E'});
                     } else if (j < theRow - 1) {
-                        rooms[i][j] = new Room(new char[]{'W', 'S', 'N'});
+                        rooms[i][j] = new Room(new char[]{'W', 'S', 'E'});
                     } else {
                         rooms[i][j] = new Room(new char[]{'W', 'S'});
                     }
@@ -110,7 +110,7 @@ public class Maze implements Serializable {
         final char[][] result = new char[theRow][theCol];
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[i].length; j++) {
-                Arrays.fill(result[j], 'L');
+                Arrays.fill(result[j], 'X');
             }
         }
         result[0][0] = '*';
