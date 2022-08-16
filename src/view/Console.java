@@ -44,7 +44,7 @@ public class Console {
         System.out.println();
         System.out.println("               QUICK INFO");
         System.out.println("Press 'M' for the Game's Main Menu.");
-        System.out.println("'X' is for the number of room that are locked.");
+        System.out.println("'L' is for the number of room that are locked.");
         System.out.println("'O' is for the number of rooms you have unlocked.");
         System.out.println("'*' represents the room you are in.");
         System.out.println();
