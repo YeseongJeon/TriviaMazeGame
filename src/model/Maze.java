@@ -105,7 +105,7 @@ public class Maze implements Serializable {
      * @param theCol column size of the maze
      * @return Array to display the maze
      */
-    private char[][] showMaze(int theRow, int theCol) {
+    public char[][] showMaze(int theRow, int theCol) {
 
         final char[][] result = new char[theRow][theCol];
         for (int i = 0; i < result.length; i++) {
