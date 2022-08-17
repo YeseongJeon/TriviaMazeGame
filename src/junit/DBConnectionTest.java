@@ -1,16 +1,11 @@
 package junit;
-import static org.junit.Assert.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import org.junit.Assert;
+import model.DBConnection;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.DBConnection;
-import model.GenerateRandomQuestions;
-import model.Question;
+import static org.junit.Assert.assertEquals;
+
 
 public class DBConnectionTest {
     private static DBConnection dbQuestions;
@@ -22,38 +17,24 @@ public class DBConnectionTest {
 
     @Test
     public void getTrueFalseQuestionsTest() {
-        assertEquals(18, dbQuestions.getTrueFalseQuestions().size());
-
-        GenerateRandomQuestions grqTF = new GenerateRandomQuestions(); //single question
-        Question tOfQuestion = grqTF.generateQuestion("TrueOrFalse");
-        assertEquals("True or False", tOfQuestion.getChoices());
-
-        Set<String> possibleTFAnswers = new HashSet<>();
-        possibleTFAnswers.add("True");
-        possibleTFAnswers.add("False");
-        Assert.assertTrue(possibleTFAnswers.contains(tOfQuestion.getAnswer()));
+        int actualNum = dbQuestions.getTrueFalseQuestions().size();
+        assertEquals(true, actualNum > 0);
+        assertEquals(18, actualNum);
     }
 
     @Test
     public void getShortAnswerQuestionsTest() {
-        assertEquals(25, dbQuestions.getShortAnswerQuestions().size());
-        GenerateRandomQuestions grqSA = new GenerateRandomQuestions(); //single question
-        Question shortQuestion = grqSA.generateQuestion("ShortAnswer");
-        assertEquals("Short Answer", shortQuestion.getChoices());
-        assertNotEquals(null, shortQuestion.getAnswer());
+        int actualNum = dbQuestions.getShortAnswerQuestions().size();
+        assertEquals(true, actualNum > 0);
+        assertEquals(25, actualNum);
+
     }
 
     @Test
     public void getMultQuestionsTest() {
-        assertEquals(6, dbQuestions.getMultQuestions().size());
-        GenerateRandomQuestions grqMC = new GenerateRandomQuestions(); //single question
-        Question multQuestion = grqMC.generateQuestion("MultipleChoice");
-        assertNotEquals(null, multQuestion.getChoices());
-        Set<String> possibleMultAnswers = new HashSet<>();
-        possibleMultAnswers.add("1");
-        possibleMultAnswers.add("2");
-        possibleMultAnswers.add("3");
-        possibleMultAnswers.add("4");
-        Assert.assertTrue(possibleMultAnswers.contains(multQuestion.getAnswer()));
+        int actualNum = dbQuestions.getMultQuestions().size();
+        assertEquals(true, actualNum > 0);
+        assertEquals(6, actualNum);
+
     }
 }
