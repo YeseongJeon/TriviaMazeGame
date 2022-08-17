@@ -69,7 +69,10 @@ public class Trivia implements Serializable {
 
                 System.out.println(q.getQuestion());
                 System.out.println(q.getChoices());
+                /*System.out.println(q.getAnswer());*/
                 String playerAnswer = Console.getplayerInput();
+                String cheat = "Cheat";
+
 
                 while (playerAnswer.equals("M") || playerAnswer.equals("?")) {
                     if (playerAnswer.equals("M")) {
@@ -85,11 +88,17 @@ public class Trivia implements Serializable {
                 }
                 if (result == 4)
                     break;
-                if (playerAnswer.equals(q.getAnswer().toLowerCase())) {
+
+                if(playerAnswer.equals(cheat.toLowerCase())){
+                    System.out.println(q.getAnswer());
                     maze.unlock(playerClick);
                     maze.move(playerClick);
                     steps++;
-                } else {
+                }else if (playerAnswer.equals(q.getAnswer().toLowerCase())) {
+                    maze.unlock(playerClick);
+                    maze.move(playerClick);
+                    steps++;
+                }else {
                     maze.deleteCurrentRoomDoor(playerClick);
                 }
             } else {
