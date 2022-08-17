@@ -134,7 +134,7 @@ public class Trivia implements Serializable {
                 startGame();
                 break;
             case "4":
-                break;
+                System.exit(0);
             default:
                 System.out.println("WRONG INPUT, TRY AGAIN by entering a number between 1 and 4");
                 break;
