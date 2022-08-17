@@ -46,7 +46,7 @@ public class MazeTest {
     public void deleteCurrentRoomDoorExceptionTest() {
         Maze maze = new Maze();
         maze.deleteCurrentRoomDoor('S');
-        assertEquals(maze.getCurrentAvailableDoors().size(), 3);
+        assertEquals(maze.getCurrentAvailableDoors().size(), 1);
     }
 
     /**
@@ -91,9 +91,10 @@ public class MazeTest {
         char[][] result = maze.showMaze(4, 4);
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[i].length; j++) {
-                assertEquals('L', result[i][j]);
+                Arrays.fill(result[j], 'L');
             }
         }
+        assertEquals(4, result.length);
     }
 
     /**
