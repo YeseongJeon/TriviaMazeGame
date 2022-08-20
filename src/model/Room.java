@@ -51,7 +51,7 @@ public class Room implements Serializable{
      * Method to delete a certain door
      * @param theDirection the door to be deleted
      */
-    public void deleteDoor(char theDirection){
+    public void deleteDoor(final char theDirection){
         myDoors.remove(theDirection);
     }
 
@@ -67,7 +67,7 @@ public class Room implements Serializable{
      * Method to open door
      * @param theDoor door to be opened
      */
-    public void openDoor(char theDoor){
+    public void openDoor(final char theDoor){
         if(myDoors.containsKey(theDoor)){
             myDoors.put(theDoor, true);
         }

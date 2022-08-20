@@ -17,14 +17,14 @@ public class Question {
 	 * Constructor for class Question
 	 * Creates a question with the question, answer, choices
 	 * 
-	 * @param question a String containing the question of the question
-	 * @param answer a String containing the answer of the question
-	 * @param choices a String containing the choices of the question
+	 * @param theQuestion a String containing the question of the question
+	 * @param theAnswer a String containing the answer of the question
+	 * @param theChoices a String containing the choices of the question
 	 */
-	public Question(final String question, final String answer, final String choices) {
-		this.myQuestion = question;
-		this.myAnswer = answer;
-		this.myChoices = choices;
+	public Question(final String theQuestion, final String theAnswer, final String theChoices) {
+		this.myQuestion = theQuestion;
+		this.myAnswer = theAnswer;
+		this.myChoices = theChoices;
 	}
 	
 	/**
