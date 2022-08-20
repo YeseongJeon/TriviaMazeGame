@@ -105,7 +105,7 @@ public class Maze implements Serializable {
      * @param theCol column size of the maze
      * @return Array to display the maze
      */
-    public char[][] showMaze(int theRow, int theCol) {
+    public char[][] showMaze(final int theRow, final int theCol) {
 
         final char[][] result = new char[theRow][theCol];
         for (int i = 0; i < result.length; i++) {
@@ -188,12 +188,12 @@ public class Maze implements Serializable {
     }
 
 
-    public boolean isCurrentRoomDoorOpen(char ch) {
+    public boolean isCurrentRoomDoorOpen(final char ch) {
         return myCurrentRooms[myCurrentRow][myCurrentCol].isOpened(ch);
     }
 
 
-    public void deleteCurrentRoomDoor(char theChar) {
+    public void deleteCurrentRoomDoor(final char theChar) {
         myCurrentRooms[myCurrentRow][myCurrentCol].deleteDoor(theChar);
 
         if (theChar == 'W') {

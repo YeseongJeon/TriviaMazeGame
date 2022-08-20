@@ -14,13 +14,13 @@ public class Trivia implements Serializable {
     /**
      * This function prints the maze, and then gets the user's direction
      *
-     * @param maze the maze object
+     * @param theMaze the maze object
      * @return The player's choice of direction.
      */
-    public static char currentPlayer(Maze maze) {
-        Console.printMaze(maze);
+    public static char currentPlayer(final Maze theMaze) {
+        Console.printMaze(theMaze);
 
-        char playeroption = Console.getUsrDirec(maze);
+        char playeroption = Console.getUsrDirec(theMaze);
 
         return playeroption;
     }
@@ -35,11 +35,11 @@ public class Trivia implements Serializable {
      * out of the loop. If the player has not taken 15 steps, the function will then check if the player has clicked on the
      * mainMenu button. If the player has clicked on the mainMenu button, the function will call the mainMenu function and then check
      *
-     * @param maze the maze object that is created in the main method.
+     * @param theMaze the maze object that is created in the main method.
      */
-    public static void newGame(Maze maze) {
+    public static void newGame(final Maze theMaze) {
         steps = 0;
-        while (!maze.isLastRoom() && !maze.isCurrentRoomLocked()) {
+        while (!theMaze.isLastRoom() && !theMaze.isCurrentRoomLocked()) {
             if (steps == 15)
                 break;
             if (steps == 10) {
@@ -48,21 +48,21 @@ public class Trivia implements Serializable {
                 System.out.println();
             }
             int result = 0;
-            char playerClick = currentPlayer(maze);
+            char playerClick = currentPlayer(theMaze);
             if (playerClick == 'Q')
                 break;
             while (playerClick == 'M') {
                 if (playerClick == 'M') {
-                    if (!mainMenu(maze)) {
+                    if (!mainMenu(theMaze)) {
                         result = 3;
                         break;
                     }
-                    playerClick = currentPlayer(maze);
+                    playerClick = currentPlayer(theMaze);
                 }
             }
             if (result == 4)
                 break;
-            if (!maze.isCurrentRoomDoorOpen(playerClick)) {
+            if (!theMaze.isCurrentRoomDoorOpen(playerClick)) {
 
                 GenerateRandomQuestions grq = new GenerateRandomQuestions();
                 Question q = grq.createQuestion();
@@ -76,11 +76,11 @@ public class Trivia implements Serializable {
 
                 while (playerAnswer.equals("M") || playerAnswer.equals("?")) {
                     if (playerAnswer.equals("M")) {
-                        if (mainMenu(maze) == false) {
+                        if (mainMenu(theMaze) == false) {
                             result = 4;
                             break;
                         }
-                        System.out.println(maze);
+                        System.out.println(theMaze);
                         System.out.println(q);
                         System.out.println(q.getAnswer());
                         playerAnswer = Console.getplayerInput();
@@ -91,22 +91,22 @@ public class Trivia implements Serializable {
 
                 if(playerAnswer.equals(cheat.toLowerCase())){
                     System.out.println(q.getAnswer());
-                    maze.unlock(playerClick);
-                    maze.move(playerClick);
+                    theMaze.unlock(playerClick);
+                    theMaze.move(playerClick);
                     steps++;
                 }else if (playerAnswer.equals(q.getAnswer().toLowerCase())) {
-                    maze.unlock(playerClick);
-                    maze.move(playerClick);
+                    theMaze.unlock(playerClick);
+                    theMaze.move(playerClick);
                     steps++;
                 }else {
-                    maze.deleteCurrentRoomDoor(playerClick);
+                    theMaze.deleteCurrentRoomDoor(playerClick);
                 }
             } else {
-                maze.move(playerClick);
+                theMaze.move(playerClick);
                 steps++;
             }
         }
-        Console.printWonOrLost(maze.isLastRoom());
+        Console.printWonOrLost(theMaze.isLastRoom());
     }
 
     /**
@@ -134,7 +134,7 @@ public class Trivia implements Serializable {
                 startGame();
                 break;
             case "4":
-                break;
+                System.exit(0);
             default:
                 System.out.println("WRONG INPUT, TRY AGAIN by entering a number between 1 and 4");
                 break;
@@ -145,13 +145,13 @@ public class Trivia implements Serializable {
      * The function takes in a maze object and saves it to a file with the name of the file being the name of the maze
      * object
      *
-     * @param maze The maze object that is to be saved.
+     * @param theMaze The maze object that is to be saved.
      */
-    public static void saveGame(Maze maze) {
+    public static void saveGame(final Maze theMaze) {
         try {
             FileOutputStream outputStream = new FileOutputStream(Console.getFileName() + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(outputStream);
-            out.writeObject(maze);
+            out.writeObject(theMaze);
             out.close();
             outputStream.close();
             System.out.println("Thank You! The Game Has Been Saved!!!");
@@ -184,15 +184,15 @@ public class Trivia implements Serializable {
     /**
      * The main menu method takes a Maze object as an argument and returns a boolean
      *
-     * @param maze The maze object that is being used in the game.
+     * @param theMaze The maze object that is being used in the game.
      * @return A boolean value.
      */
-    public static boolean mainMenu(Maze maze) {
+    public static boolean mainMenu(final Maze theMaze) {
         Console.printMenuScreen();
         final String menuChoice = Console.inputMenuScreen();
         switch (menuChoice) {
                 case "1":
-                    saveGame(maze);
+                    saveGame(theMaze);
                     return true;
                 case "2":
                     startGame();
