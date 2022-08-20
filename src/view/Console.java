@@ -149,28 +149,28 @@ public class Console {
     /**
      * This function prints out the maze, the current position of the player, and the available doors
      *
-     * @param ourMaze the maze object that we are currently working with
+     * @param theMaze the maze object that we are currently working with
      */
-    public static void printMaze(final Maze ourMaze) {
-        System.out.println(ourMaze);
+    public static void printMaze(final Maze theMaze) {
+        System.out.println(theMaze);
         // tell player now where they are currently at
-        System.out.println("Your current position in the maze is at row " + ourMaze.getRowIndex() + " and at column " + ourMaze.getColIndex());
+        System.out.println("Your current position in the maze is at row " + theMaze.getRowIndex() + " and at column " + theMaze.getColIndex());
 
         System.out.println("Please select any door");
 
-        System.out.println(ourMaze.getCurrentAvailableDoors());
+        System.out.println(theMaze.getCurrentAvailableDoors());
     }
 
     /**
      * This function takes in a Maze object and returns a character that is either a direction, the main mainMenu button, or
      * the quit button
      *
-     * @param ourMaze The maze that the user is currently in.
+     * @param theMaze The maze that the user is currently in.
      * @return A character
      */
-    public static char getUsrDirec(final Maze ourMaze) {
+    public static char getUsrDirec(final Maze theMaze) {
         final Set<Character> set = new HashSet<>();
-        for (char ch : ourMaze.getCurrentAvailableDoors()) {
+        for (char ch : theMaze.getCurrentAvailableDoors()) {
             set.add(ch);
         }
         set.add(MAIN_MENU_BUTTON);
@@ -210,10 +210,10 @@ public class Console {
     /**
      * If the mazePlayer is true, print the ASCII art for winning, otherwise print the ASCII art for losing
      *
-     * @param mazePlayer true if the player won, false if the player lost
+     * @param theMazePlayer true if the player won, false if the player lost
      */
-    public static void printWonOrLost(final boolean mazePlayer) {
-        if (mazePlayer) {
+    public static void printWonOrLost(final boolean theMazePlayer) {
+        if (theMazePlayer) {
             System.out.println("\n" +
                     "██╗░░░██╗░█████╗░██╗░░░██╗  ░██╗░░░░░░░██╗░█████╗░███╗░░██╗██╗\n" +
                     "╚██╗░██╔╝██╔══██╗██║░░░██║  ░██║░░██╗░░██║██╔══██╗████╗░██║██║\n" +
