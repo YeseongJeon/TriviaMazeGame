@@ -167,22 +167,18 @@ public class Trivia implements Serializable {
      */
     public static Maze loadGame() throws NullPointerException{
         Maze maze = null;
+        File f = new File(Console.getFileName() + ".ser");
         try {
-            FileInputStream grabFile = new FileInputStream(Console.getFileName() + ".ser");
+            FileInputStream grabFile = new FileInputStream(f);
             ObjectInputStream in = new ObjectInputStream(grabFile);
             maze = (Maze) in.readObject();
             in.close();
             grabFile.close();
-        } catch (IOException i) {
-            i.printStackTrace();
-            return maze;
-        } catch (ClassNotFoundException c) {
-            System.out.println(" ERROR! Could Not Retrieve the Maze ");
-            c.printStackTrace();
-            return maze;
-        }
+        	
+        }catch (IOException | ClassNotFoundException i) {
+        	return loadGame();
+        } 
         return maze;
-
     }
 
     /**
