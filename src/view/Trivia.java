@@ -5,6 +5,11 @@ import model.Maze;
 import model.Question;
 
 import java.io.*;
+/** This class will be responsible for Saving/Loading/Starting a new game and many other important functionalities
+ *
+ * author Liban Jama
+ * Version 1.0 TCSS 360(Summer 2022)
+ */
 public class Trivia implements Serializable {
 
     static long serialVersionUID = 112L;

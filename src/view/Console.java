@@ -4,10 +4,10 @@ import model.Maze;
 
 import java.util.*;
 
-/* This class will be responsible for many of our Console based interface needs
+/** This class will be responsible for many of our Console based interface needs
  *
  * author Liban Jama
- * Version 1.0
+ * Version 1.0 TCSS 360(Summer 2022)
  */
 
 public class Console {
