@@ -1,1 +1,19 @@
-A responsive Trivia Maze Game. That allows the user to go through the maze and unlock doors by answering questions until they reach the exit. The user will complete the game if they answer all trivia questions correctly and complete the maze.
+Dungeon Adventure
+Overview
+Trivia Maze Project
+
+Support
+
+    Trivia Maze is created by Liban Jama, Yeseong Jeon and Johnny Heredia.
+
+    Found a problem? Pull requests are welcome.
+
+    If you have ideas, questions or suggestions - Welcome to discussions. 
+
+
+Get started
+
+    Clone the Trivia Maze.
+
+git clone https://github.com/liban-jama/TriviaMazeGame.git
+cd TriviaMaze
