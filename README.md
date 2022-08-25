@@ -2,7 +2,7 @@
 
 ### Overview
 
-- CLI Based Application that asks the users a series of questions that they must answer correctly in order to progress further in the Maze
+- CLI Based Application that asks the user a series of questions that they must answer correctly in order to progress further in the Maze
 
 - The user will have won the game if they reach the bottom right exit!
 
@@ -16,7 +16,7 @@ ___
 ___
 
 
-## How To Get started
+## How To Get started!
 
 > Clone the Trivia Maze Project
 
