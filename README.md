@@ -1,4 +1,5 @@
 # Trivia Maze
+![Logo](https://i.imgur.com/ISUNVOd.png)                                                                                  
 
 ### Overview
 
