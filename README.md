@@ -21,7 +21,7 @@ ___
 
 > Clone the Trivia Maze Project
 
-    git clone https://github.com/liban-jama/TriviaMazeGame.git
+    git clone https://github.com/liban-jama/TriviaMazeGame.git](https://github.com/YeseongJeon/TriviaMazeGame.git
     cd Trivia_Maze
 
 [liban-jama-github]: https://github.com/liban-jama
