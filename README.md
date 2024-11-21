@@ -22,9 +22,9 @@ ___
 > Clone the Trivia Maze Project
 
     1. git clone https://github.com/YeseongJeon/TriviaMazeGame.git
-    2. cd TriviaMazeGame/src
-    3. javac -cp ../sqlite-jdbc-3.34.0.jar controller/*.java model/*.java view/*.java
-    4. java -cp .:../sqlite-jdbc-3.34.0.jar controller.Start
+    2. cd TriviaMazeGame
+    3. javac -d out -cp sqlite-jdbc-3.34.0.jar src/controller/*.java src/model/*.java src/view/*.java
+    4. java -cp out:sqlite-jdbc-3.34.0.jar controller.Start
 
 [liban-jama-github]: https://github.com/liban-jama
 [YeseongJeon-github]: https://github.com/YeseongJeon
